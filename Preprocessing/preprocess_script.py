@@ -30,7 +30,7 @@ class TextDetection:
         ]
 
 
-    def get_all_lines(self) -> list:
+    def get_all_lines(self, limit) -> list:
         lines = []
         line_str = ''
         math = MathHelper
@@ -39,10 +39,10 @@ class TextDetection:
             if len(line_str) <= 1:
                 m,b = math.find_linear_parameters(symbol.bounding_box.vertices)
 
-            if math.share_line(symbol.bounding_box.vertices, m, b):
+            if math.share_line(symbol.bounding_box.vertices, m, b, limit):
                 line_str += symbol.text
                 line_str += " " if math.is_space_here(symbol) else ""
-                m,b = math.find_linear_parameters(symbol.bounding_box.vertices)
+                m, b = math.find_linear_parameters(symbol.bounding_box.vertices)
                 if m == 0:
                     continue   
             else:

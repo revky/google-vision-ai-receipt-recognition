@@ -17,9 +17,9 @@ class MathHelper:
         b = helper.find_b(symbol_vertices, 1, m)
         return (m,b)    
 
-    def share_line(symbol_vertices, m, b)->bool:
+    def share_line(symbol_vertices, m, b, limit)->bool:
         x1, y1 = symbol_vertices[0].x, symbol_vertices[0].y
-        return y1 - (m*x1 + b) < 10
+        return y1 - (m*x1 + b) < limit
 
     def is_space_here(symbol)->bool:
         return symbol.property.detected_break.type_ != 0
