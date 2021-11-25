@@ -1,3 +1,5 @@
+# Test file in purpouse of testing and analysing Google Vision output
+
 from preprocess_script import Procedure
 from PIL import Image
 import os

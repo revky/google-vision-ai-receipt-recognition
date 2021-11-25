@@ -13,12 +13,12 @@ class MathHelper:
 
     def find_linear_parameters(symbol_vertices)-> tuple:
         helper = MathHelper
-        m = helper.find_m(symbol_vertices,0 ,1)
-        b = helper.find_b(symbol_vertices, 1, m)
+        m = helper.find_m(symbol_vertices, 3,2)
+        b = helper.find_b(symbol_vertices, 2, m)
         return (m,b)    
 
     def share_line(symbol_vertices, m, b, limit)->bool:
-        x1, y1 = symbol_vertices[0].x, symbol_vertices[0].y
+        x1, y1 = symbol_vertices[3].x, symbol_vertices[3].y
         return y1 - (m*x1 + b) < limit
 
     def is_space_here(symbol)->bool:
