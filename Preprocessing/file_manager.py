@@ -1,6 +1,6 @@
 # Test file in purpouse of testing and analysing Google Vision output
 
-from preprocess_script import Procedure
+from detect_text import Procedure
 from PIL import Image
 import os
 import io
@@ -10,10 +10,9 @@ class FileManager:
         self.proc = procedure
         self.file_name = self.proc.td.image_path.split('\\')[-1][:-4]
         self.text_lines = self.proc.td.get_all_lines(limit)
-        self.image_bytes = self.proc.td.content
-        self.image =  Image.open(io.BytesIO(self.image_bytes))
+        self.image =  Image.open(io.BytesIO(self.proc.td.content))
         self.cwd = os.getcwd()
-        self.folder_path = os.path.join(self.cwd,self.file_name)
+        self.folder_path = os.path.join(os.path.abspath(os.path.join(os.getcwd(), os.pardir)),self.file_name)
         self.image_name = self.file_name+f'limit_{limit}'+'.jpg'
         self.text_file = os.path.join(self.folder_path,self.file_name+f'limit_{limit}'+'.txt')
 

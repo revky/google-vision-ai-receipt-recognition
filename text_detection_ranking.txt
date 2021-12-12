@@ -1,0 +1,21 @@
+f1 = 8 srednie 
+f2 = 8 male 
+f3 = 8 duze
+f4 = 6,8 srednie 
+f5 = 8 male
+f6 = 4,6,8 male
+f7 = 4,6,8 duzy
+f8 = 6,8 male
+f9 = 8 male 
+
+t1 = 6 sredni
+t2 = 4,6,8 maly
+t3 = 4,6,8 duzy
+t4 = 4,6,8 sredni
+t5 = 6,8 male
+t6 = 6,8 male 
+t7 = 6,8 duzy
+t8 = 4,6,8 sredni
+t9 = 4,6,8 maly
+
+avg = 6.5

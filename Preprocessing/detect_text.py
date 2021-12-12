@@ -15,6 +15,7 @@ class TextDetection:
         with io.open(self.image_path,'rb') as image_bytes:
             self.content = image_bytes.read()
 
+        
         self.image = vision.Image(content=self.content)
         self.response = self.client.document_text_detection(image=self.image)
         self.full_text = self.response.full_text_annotation
@@ -29,6 +30,9 @@ class TextDetection:
         for symbol in word.symbols
         ]
 
+    @staticmethod
+    def is_space_here(symbol)->bool:
+        return symbol.property.detected_break.type_ != 0
 
     def get_all_lines(self, limit) -> list:
         lines = []
@@ -41,7 +45,7 @@ class TextDetection:
 
             if math.share_line(symbol.bounding_box.vertices, m, b, limit):
                 line_str += symbol.text
-                line_str += " " if math.is_space_here(symbol) else ""
+                line_str += " " if TextDetection.is_space_here(symbol) else ""
                 m, b = math.find_linear_parameters(symbol.bounding_box.vertices)
                 if m == 0:
                     continue   

@@ -20,6 +20,3 @@ class MathHelper:
     def share_line(symbol_vertices, m, b, limit)->bool:
         x1, y1 = symbol_vertices[3].x, symbol_vertices[3].y
         return y1 - (m*x1 + b) < limit
-
-    def is_space_here(symbol)->bool:
-        return symbol.property.detected_break.type_ != 0
