@@ -19,6 +19,10 @@ class TextDetection:
         self.image = vision.Image(content=self.content)
         self.response = self.client.document_text_detection(image=self.image)
         self.full_text = self.response.full_text_annotation
+
+    @staticmethod
+    def is_space_here(symbol)->bool:
+        return symbol.property.detected_break.type_ != 0
     
     def get_all_symbols(self) -> list:
         return [
@@ -29,10 +33,6 @@ class TextDetection:
         for word in paragraph.words
         for symbol in word.symbols
         ]
-
-    @staticmethod
-    def is_space_here(symbol)->bool:
-        return symbol.property.detected_break.type_ != 0
 
     def get_all_lines(self, limit) -> list:
         lines = []
