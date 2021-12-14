@@ -17,6 +17,6 @@ class MathHelper:
         b = helper.find_b(symbol_vertices, 2, m)
         return (m,b)    
 
-    def share_line(symbol_vertices, m, b, limit)->bool:
+    def share_line(symbol_vertices, m, b)->bool:
         x1, y1 = symbol_vertices[3].x, symbol_vertices[3].y
-        return y1 - (m*x1 + b) < limit
+        return y1 - (m*x1 + b) < 8

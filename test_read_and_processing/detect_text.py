@@ -43,12 +43,10 @@ class TextDetection:
             if len(line_str) <= 1:
                 m,b = math.find_linear_parameters(symbol.bounding_box.vertices)
 
-            if math.share_line(symbol.bounding_box.vertices, m, b, limit):
+            if math.share_line(symbol.bounding_box.vertices, m, b):
                 line_str += symbol.text
                 line_str += " " if TextDetection.is_space_here(symbol) else ""
                 m, b = math.find_linear_parameters(symbol.bounding_box.vertices)
-                if m == 0:
-                    continue   
             else:
                 lines.append(line_str)
                 line_str = symbol.text
