@@ -10,7 +10,6 @@ class ApiConn:
         return self.__client
 
 def get_full_text_from_recipe(picture, api_client):
-
     with open(picture,'rb') as im:
         content = im.read()
     image = vision.Image(content=content)
