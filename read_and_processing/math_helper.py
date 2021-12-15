@@ -17,6 +17,7 @@ class MathHelper:
         b = helper.find_b(symbol_cords, 2, m)
         return (m,b)    
 
+# i found that 8 works best as as threshold for most of the receipts
     def if_share_line(symbol_cords, m, b)->bool:
         x1, y1 = symbol_cords[3].x, symbol_cords[3].y
         return y1 - (m*x1 + b) < 8

@@ -37,7 +37,7 @@ class ProcessText:
         return rebuilded_lines
 
     def if_price_without_product(text_line):
-        return re.search(r'[^\-]\s\d+[,.]+?\d\d\s?[0OABC]\s', text_line)
+        return re.search(r'\s\d+[,.]+?\d\d\s?[0OABC]\s', text_line)
 
     def correct_mistakes_in_rebuilded_lines(rebuilded_lines):
         # iterate through all the items and if item with specific characteristic is found
