@@ -45,7 +45,7 @@ class ProcessText:
         processed_lines = []
         for i in range(len(rebuilded_lines)):
             current_item = rebuilded_lines[i]
-            if ProcessText.if_price_without_product(current_item) and len(current_item) < 25:
+            if ProcessText.if_price_without_product(current_item) and len(current_item) < 25 and not ProcessText.if_price_without_product(processed_lines[-1]):
                 processed_lines[-1] += current_item
                 continue
             processed_lines.append(current_item)
