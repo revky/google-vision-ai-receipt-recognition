@@ -19,4 +19,4 @@ class MathHelper:
 
     def if_share_line(symbol_cords, m, b)->bool:
         x1, y1 = symbol_cords[3].x, symbol_cords[3].y
-        return y1 - (m*x1 + b) < 7
+        return y1 - (m*x1 + b) < 8
