@@ -1,9 +1,12 @@
 # Test file in purpouse of testing and analysing Google Vision output
 
-from detect_text import Procedure
-from PIL import Image
-import os
 import io
+import os
+
+from PIL import Image
+
+from detect_text import Procedure
+
 
 class FileManager:
     def __init__ (self, procedure, limit = 10):

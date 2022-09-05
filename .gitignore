@@ -128,7 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-key.json
+read_and_processing/key.json
 /test_pics
 /recipe_recognition_env
 /readed_text

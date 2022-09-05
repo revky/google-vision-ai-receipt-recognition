@@ -1,7 +1,10 @@
-import os
 import io
+import os
+
 from google.cloud import vision
+
 from math_helper import MathHelper
+
 
 class ApiConnector:
     def __init__(self, cridentials_path):
