@@ -46,7 +46,7 @@ class ProcessText:
         return False
 
     def has_needed_length(line: str) -> bool:
-        if len(line) > 25:
+        if len(line) > 15:
             return True
         return False
 
@@ -54,6 +54,14 @@ class ProcessText:
         if ProcessText.contains_product(line) and ProcessText.has_needed_length(line):
             return True
         return False
+
+    def extract_price(text_content: str):
+        t = text_content.replace(':', '0')
+        pattern = r'[^.,-]\.?(\s?\d+[,.]+?\d\d\s?[0OABC846]\s)'
+        if re.search(pattern, t) and len(t) > 25:
+            price = re.findall(pattern, t)
+            return price[0]
+        return ""
 
     def correct_mistakes_in_rebuilded_lines(rebuilded_lines):
         # iterate through all the items and if item with specific characteristic is found
@@ -70,10 +78,12 @@ class ProcessText:
         return corrected_lines
 
     def generate_json(corrected_lines: List[str]):
-        products = {}
-        i = 1
-        for line in corrected_lines:
+        products = []
+        for i, line in enumerate(corrected_lines):
             if ProcessText.has_product_properties(line):
-                products[f'product_{i}'] = line
-                i += 1
+                price = ProcessText.extract_price(line)
+                line = line.removesuffix(price)
+                products.append({'name': line.strip(), 'quantity': 1,
+                                 'price': float(re.findall(r'\d+\.\d+', price.strip())[0]),
+                                 'id': i})
         return products

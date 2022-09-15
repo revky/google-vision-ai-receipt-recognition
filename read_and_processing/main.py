@@ -1,6 +1,4 @@
 from flask import Flask, request, jsonify
-
-from cloud_service import ApiConn
 from cloud_service import get_full_text_from_recipe
 from process_text import ProcessText as pt
 
@@ -20,12 +18,11 @@ def main(client, pic) -> list:
 app = Flask(__name__)
 
 
-@app.route("/get_products", methods=["POST"])
+@app.route("/read_products", methods=["POST"])
 def process_image():
-    c = ApiConn(KEY).get_client()
-    file_text = request.get_data()
-    json_content = str(main(c, file_text))
-    return jsonify({'receipt_data': json_content})
+    file = request.files['image'].read()
+    json_content = main(KEY, file)
+    return jsonify(json_content)
 
 
 if __name__ == "__main__":
